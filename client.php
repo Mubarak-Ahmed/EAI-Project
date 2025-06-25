@@ -5,7 +5,7 @@ $client = new SoapClient(null, [
     'trace'    => 1
 ]);
 
-// ✅ Always load reserved seats (even on GET)
+// Always load reserved seats 
 try {
     $reservedList = $client->getReservedSeats();
 $reservedSeatIds = array_filter(explode(",", trim($reservedList)), 'strlen');
@@ -13,7 +13,7 @@ $reservedSeatIds = array_filter(explode(",", trim($reservedList)), 'strlen');
     $reservedSeatIds = [];
 }
 
-// ✅ Booking logic only on POST
+// Booking logic on POST
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $selectedSeats = $_POST['selectedSeats'] ?? '';
     try {
@@ -149,7 +149,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
 
         .stadium-seat.unavailable {
-    background: #d32f2f; /* red */
+    background: #d32f2f; 
     border-color: #b71c1c;
     cursor: not-allowed;
     pointer-events: none;
@@ -178,7 +178,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     border-color: #b71c1c;
 }
 
-        /* Make sure the form and legend are below the stadium */
+
         .stadium-form-wrapper {
        
         }
@@ -365,7 +365,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     document.getElementById('bookingForm').addEventListener('submit', function (e) {
-        updateHiddenField(); // 🔁 Ensure field is updated first
+        updateHiddenField(); 
 
         const name = document.getElementById('nameInput').value.trim();
         const email = document.getElementById('emailInput').value.trim();
